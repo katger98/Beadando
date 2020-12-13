@@ -16,6 +16,7 @@ namespace IRF_IT6NSI
         {
             InitializeComponent();
             DrawFormElements();
+
         }
        private void DrawFormElements()
         {

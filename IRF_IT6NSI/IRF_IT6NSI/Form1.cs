@@ -19,8 +19,9 @@ namespace IRF_IT6NSI
         int SelectedRow1 = 0;
         int SelectedColumn = 0;
         int SelectedRow2 = 0;
-        int[] ShowApp = new int[41];
-        int[] ShowAcc = new int[41];
+        const int N = 40;
+        int[] ShowApp = new int[N+1];
+        int[] ShowAcc = new int[N+1];
         public Form1()
         {
             InitializeComponent();
@@ -91,6 +92,7 @@ namespace IRF_IT6NSI
                 ListApplications();
                 ListAccepted();
                 SelectedRow1 = 0;
+                ButtonCount();
             }
             catch (Exception)
             {
@@ -116,6 +118,7 @@ namespace IRF_IT6NSI
                 ListApplications();
                 ListAccepted();
                 SelectedRow2 = 0;
+                ButtonCount();
             }
             catch (Exception)
             {
@@ -130,6 +133,24 @@ namespace IRF_IT6NSI
             if (e.RowIndex >= 0)
             {
                 SelectedRow2 = e.RowIndex;
+            }
+        }
+
+        private void ButtonCount()
+        {
+            int ins = 1;
+            foreach (var cb in this.Controls.OfType<CountButton>())
+            {
+                int count = 0;
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                {
+                    if (dataGridView2.Rows[i].Cells[2].Value.ToString() == ((Instruments)ins).ToString())
+                    {
+                        count++;
+                    }
+                }
+                cb.Value = count;
+                ins++;
             }
         }
 

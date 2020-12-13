@@ -14,6 +14,8 @@ namespace IRF_IT6NSI
     public partial class Form1 : Form
     {
         ApplicationsEntities context = new ApplicationsEntities();
+        public BindingSource SavingBS = new BindingSource();
+        public bool SaveButton = true;
         int SelectedRow1 = 0;
         int SelectedColumn = 0;
         int SelectedRow2 = 0;
@@ -23,6 +25,7 @@ namespace IRF_IT6NSI
         {
             InitializeComponent();
             DrawFormElements();
+            button3.Enabled = SaveButton;
             context.Applications.Load();
             for (int i = 0; i < ShowApp.Length; i++)
             {
@@ -75,6 +78,7 @@ namespace IRF_IT6NSI
                           Mű = x.Piece
                       };
             dataGridView2.DataSource = acc.ToList();
+            SavingBS.DataSource = acc.ToList();
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
@@ -126,6 +130,17 @@ namespace IRF_IT6NSI
             if (e.RowIndex >= 0)
             {
                 SelectedRow2 = e.RowIndex;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Saving form2 = new Saving(SavingBS);
+            DialogResult result = form2.ShowDialog();
+            if (result==DialogResult.OK)
+            {
+                //MENTÉS CSV FÁJLBA
+                MessageBox.Show("Sikeres mentés a Fellépők.csv fájlba");
             }
         }
     }

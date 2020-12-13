@@ -15,18 +15,18 @@ namespace IRF_IT6NSI
     {
         ApplicationsEntities context = new ApplicationsEntities();
         public BindingSource SavingBS = new BindingSource();
-        public bool SaveButton = true;
         int SelectedRow1 = 0;
         int SelectedColumn = 0;
         int SelectedRow2 = 0;
         const int N = 40;
-        int[] ShowApp = new int[N+1];
-        int[] ShowAcc = new int[N+1];
+        int[] ShowApp = new int[N + 1];
+        int[] ShowAcc = new int[N + 1];
+        int[] Sav = new int[5];
         public Form1()
         {
             InitializeComponent();
             DrawFormElements();
-            button3.Enabled = SaveButton;
+            button3.Enabled = false;
             context.Applications.Load();
             for (int i = 0; i < ShowApp.Length; i++)
             {
@@ -150,7 +150,33 @@ namespace IRF_IT6NSI
                     }
                 }
                 cb.Value = count;
+                Sav[ins] = count;
                 ins++;
+            }
+            ButtonCheck();
+        }
+        private void ButtonCheck()
+        {
+            bool joe = true;
+            int i = 1;
+            while ((joe == true) && (i < 5))
+            {
+                if ((Sav[i] > 0) && (Sav[i] < 5))
+                {
+                }
+                else
+                {
+                    joe = false;
+                }
+                i++;
+            }
+            if (joe)
+            {
+                button3.Enabled = true;
+            }
+            else
+            {
+                button3.Enabled = false;
             }
         }
 
@@ -158,7 +184,7 @@ namespace IRF_IT6NSI
         {
             Saving form2 = new Saving(SavingBS);
             DialogResult result = form2.ShowDialog();
-            if (result==DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 //MENTÉS CSV FÁJLBA
                 MessageBox.Show("Sikeres mentés a Fellépők.csv fájlba");

@@ -55,6 +55,7 @@ namespace IRF_IT6NSI
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(422, 368);
             this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // label1
             // 
@@ -94,6 +95,7 @@ namespace IRF_IT6NSI
             this.button2.TabIndex = 9;
             this.button2.Text = "<";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 

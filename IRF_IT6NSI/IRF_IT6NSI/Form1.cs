@@ -14,8 +14,9 @@ namespace IRF_IT6NSI
     public partial class Form1 : Form
     {
         ApplicationsEntities context = new ApplicationsEntities();
-        int SelectedRow = 0;
+        int SelectedRow1 = 0;
         int SelectedColumn = 0;
+        int SelectedRow2 = 0;
         int[] ShowApp = new int[41];
         int[] ShowAcc = new int[41];
         public Form1()
@@ -79,16 +80,53 @@ namespace IRF_IT6NSI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ShowApp[(int)dataGridView1.Rows[SelectedRow].Cells[0].Value] = 0;
-            ShowAcc[(int)dataGridView1.Rows[SelectedRow].Cells[0].Value] = (int)dataGridView1.Rows[SelectedRow].Cells[0].Value;
-            ListApplications();
-            ListAccepted();
+            try
+            {
+                ShowApp[(int)dataGridView1.Rows[SelectedRow1].Cells[0].Value] = 0;
+                ShowAcc[(int)dataGridView1.Rows[SelectedRow1].Cells[0].Value] = (int)dataGridView1.Rows[SelectedRow1].Cells[0].Value;
+                ListApplications();
+                ListAccepted();
+                SelectedRow1 = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Üres a jelentkezők táblázata.");
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectedColumn = e.ColumnIndex;
-            SelectedRow = e.RowIndex;
+            if (e.RowIndex >= 0)
+            {
+                SelectedColumn = e.ColumnIndex;
+                SelectedRow1 = e.RowIndex;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ShowApp[(int)dataGridView2.Rows[SelectedRow2].Cells[0].Value] = (int)dataGridView2.Rows[SelectedRow2].Cells[0].Value;
+                ShowAcc[(int)dataGridView2.Rows[SelectedRow2].Cells[0].Value] = 0;
+                ListApplications();
+                ListAccepted();
+                SelectedRow2 = 0;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Üres a kiválasztottak táblázáta.");
+            }
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                SelectedRow2 = e.RowIndex;
+            }
         }
     }
 }

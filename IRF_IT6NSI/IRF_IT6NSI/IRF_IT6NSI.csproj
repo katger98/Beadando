@@ -61,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,16 +106,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Applications.mdf</DependentUpon>
     </Content>
-    <Content Include="Images\cello.jpg">
+    <Content Include="Images\2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\guitar.jpg">
+    <Content Include="Images\3.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\piano.jpg">
+    <Content Include="Images\4.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\violin.jpg">
+    <Content Include="Images\1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

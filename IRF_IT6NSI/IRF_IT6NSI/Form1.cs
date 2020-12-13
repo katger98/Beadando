@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,12 @@ namespace IRF_IT6NSI
 {
     public partial class Form1 : Form
     {
+        ApplicationsEntities context = new ApplicationsEntities();
         public Form1()
         {
             InitializeComponent();
             DrawFormElements();
+            ListApplications();
 
         }
        private void DrawFormElements()
@@ -35,6 +38,19 @@ namespace IRF_IT6NSI
                 pictureBox.SizeMode =PictureBoxSizeMode.StretchImage;
                 Controls.Add(pictureBox);
             }
+        }
+        private void ListApplications()
+        {
+            context.Applications.Load();
+            var app = from x in context.Applications
+                      select new
+                      {
+                          Név = x.Name,
+                          Hangszer = (Instruments)x.Instrument,
+                          Mű = x.Piece
+                      };
+            dataGridView1.DataSource = app.ToList();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
     }
 }

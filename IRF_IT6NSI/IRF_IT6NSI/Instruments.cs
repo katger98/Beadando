@@ -8,9 +8,9 @@ namespace IRF_IT6NSI
 {
     public enum Instruments
     {
-        Piano = 1,
-        Guitar = 2,
-        Violin = 3,
-        Cello = 4
+        Zongora = 1,
+        Gitár = 2,
+        Hegedű = 3,
+        Cselló = 4
     }
 }

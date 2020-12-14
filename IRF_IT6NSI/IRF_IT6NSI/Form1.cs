@@ -199,7 +199,7 @@ namespace IRF_IT6NSI
             using (var sw = new StreamWriter("../../Concert/Concert.csv", false, Encoding.UTF8))
             {
 
-                var newline = string.Format("{0};{1};{2};{3}", "Id", "Name", "Instrument", "Piece");
+                var newline = string.Format("{0},{1},{2},{3}", "Id", "Name", "Instrument", "Piece");
                 sw.WriteLine(newline);
                 sw.Flush();
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
@@ -208,7 +208,7 @@ namespace IRF_IT6NSI
                     var name = dataGridView2.Rows[i].Cells[1].Value.ToString();
                     var instrument = dataGridView2.Rows[i].Cells[2].Value.ToString();
                     var piece = dataGridView2.Rows[i].Cells[3].Value.ToString();
-                    newline = string.Format("{0};{1};{2};{3}", id, name, instrument, piece);
+                    newline = string.Format("{0},{1},{2},{3}", id, name, instrument, piece);
                     sw.WriteLine(newline);
                     sw.Flush();
                 }

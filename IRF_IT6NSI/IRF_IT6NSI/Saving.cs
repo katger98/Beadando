@@ -18,5 +18,6 @@ namespace IRF_IT6NSI
             dataGridView1.DataSource = FinalBS;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
+
     }
 }

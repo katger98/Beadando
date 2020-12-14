@@ -78,6 +78,7 @@ namespace IRF_IT6NSI
             // 
             // button1
             // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(484, 126);
             this.button1.Name = "button1";
@@ -113,6 +114,8 @@ namespace IRF_IT6NSI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CancelButton = this.button1;
             this.ClientSize = new System.Drawing.Size(987, 576);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);

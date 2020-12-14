@@ -77,6 +77,8 @@ namespace IRF_IT6NSI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(478, 507);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

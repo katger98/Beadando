@@ -27,7 +27,6 @@ namespace IRF_IT6NSI
         {
             InitializeComponent();
             DrawFormElements();
-            //button3.Enabled = false;
             context.Applications.Load();
             InitArray();
             ListApplications();
@@ -192,20 +191,24 @@ namespace IRF_IT6NSI
             if (result == DialogResult.OK)
             {
                 SaveCSV();
-                MessageBox.Show("Sikeres mentés a Fellepok.csv fájlba");
+                MessageBox.Show("Sikeres mentés a Concert.csv fájlba.");
             }
         }
         private void SaveCSV()
         {
-            using (var sw = new StreamWriter("Fellepok/Fellepok.csv"))
+            using (var sw = new StreamWriter("../../Concert/Concert.csv", false, Encoding.UTF8))
             {
+
+                var newline = string.Format("{0};{1};{2};{3}", "Id", "Name", "Instrument", "Piece");
+                sw.WriteLine(newline);
+                sw.Flush();
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
                 {
                     var id = dataGridView2.Rows[i].Cells[0].Value.ToString();
                     var name = dataGridView2.Rows[i].Cells[1].Value.ToString();
                     var instrument = dataGridView2.Rows[i].Cells[2].Value.ToString();
                     var piece = dataGridView2.Rows[i].Cells[3].Value.ToString();
-                    var newline = string.Format("{0},{1},{2},{3}", id, name, instrument, piece);
+                    newline = string.Format("{0};{1};{2};{3}", id, name, instrument, piece);
                     sw.WriteLine(newline);
                     sw.Flush();
                 }

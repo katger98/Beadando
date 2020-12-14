@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,13 +27,17 @@ namespace IRF_IT6NSI
         {
             InitializeComponent();
             DrawFormElements();
-            button3.Enabled = false;
+            //button3.Enabled = false;
             context.Applications.Load();
+            InitArray();
+            ListApplications();
+        }
+        private void InitArray()
+        {
             for (int i = 0; i < ShowApp.Length; i++)
             {
                 ShowApp[i] = i;
             }
-            ListApplications();
         }
         private void DrawFormElements()
         {
@@ -186,9 +191,26 @@ namespace IRF_IT6NSI
             DialogResult result = form2.ShowDialog();
             if (result == DialogResult.OK)
             {
-                //MENTÉS CSV FÁJLBA
-                MessageBox.Show("Sikeres mentés a Fellépők.csv fájlba");
+                SaveCSV();
+                MessageBox.Show("Sikeres mentés a Fellepok.csv fájlba");
             }
+        }
+        private void SaveCSV()
+        {
+            using (var sw = new StreamWriter("Fellepok/Fellepok.csv"))
+            {
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                {
+                    var id = dataGridView2.Rows[i].Cells[0].Value.ToString();
+                    var name = dataGridView2.Rows[i].Cells[1].Value.ToString();
+                    var instrument = dataGridView2.Rows[i].Cells[2].Value.ToString();
+                    var piece = dataGridView2.Rows[i].Cells[3].Value.ToString();
+                    var newline = string.Format("{0},{1},{2},{3}", id, name, instrument, piece);
+                    sw.WriteLine(newline);
+                    sw.Flush();
+                }
+            }
+
         }
     }
 }

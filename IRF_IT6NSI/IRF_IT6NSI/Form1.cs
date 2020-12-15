@@ -17,7 +17,6 @@ namespace IRF_IT6NSI
         ApplicationsEntities context = new ApplicationsEntities();
         public BindingSource SavingBS = new BindingSource();
         int SelectedRow1 = 0;
-        int SelectedColumn = 0;
         int SelectedRow2 = 0;
         const int N = 40;
         int[] ShowApp = new int[N + 1];
@@ -108,7 +107,6 @@ namespace IRF_IT6NSI
         {
             if (e.RowIndex >= 0)
             {
-                SelectedColumn = e.ColumnIndex;
                 SelectedRow1 = e.RowIndex;
             }
         }

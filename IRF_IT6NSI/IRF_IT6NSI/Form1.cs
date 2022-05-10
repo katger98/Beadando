@@ -16,8 +16,8 @@ namespace IRF_IT6NSI
     {
         ApplicationsEntities context = new ApplicationsEntities();
         public BindingSource SavingBS = new BindingSource();
-        int SelectedRow1 = 0;
-        int SelectedRow2 = 0;
+        int SelectedRowAccept = 0;
+        int SelectedRowDeny = 0;
         const int N = 40;
         int[] ShowApp = new int[N + 1];
         int[] ShowAcc = new int[N + 1];
@@ -67,8 +67,8 @@ namespace IRF_IT6NSI
                           Hangszer = (Instruments)x.Instrument,
                           Mű = x.Piece
                       };
-            dataGridView1.DataSource = app.ToList();
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgwApp.DataSource = app.ToList();
+            dgwApp.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
         private void ListAccepted()
         {
@@ -81,61 +81,9 @@ namespace IRF_IT6NSI
                           Hangszer = (Instruments)x.Instrument,
                           Mű = x.Piece
                       };
-            dataGridView2.DataSource = acc.ToList();
+            dgwAcc.DataSource = acc.ToList();
             SavingBS.DataSource = acc.ToList();
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ShowApp[(int)dataGridView1.Rows[SelectedRow1].Cells[0].Value] = 0;
-                ShowAcc[(int)dataGridView1.Rows[SelectedRow1].Cells[0].Value] = (int)dataGridView1.Rows[SelectedRow1].Cells[0].Value;
-                ListApplications();
-                ListAccepted();
-                SelectedRow1 = 0;
-                ButtonCount();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Üres a jelentkezők táblázata.");
-            }
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                SelectedRow1 = e.RowIndex;
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ShowApp[(int)dataGridView2.Rows[SelectedRow2].Cells[0].Value] = (int)dataGridView2.Rows[SelectedRow2].Cells[0].Value;
-                ShowAcc[(int)dataGridView2.Rows[SelectedRow2].Cells[0].Value] = 0;
-                ListApplications();
-                ListAccepted();
-                SelectedRow2 = 0;
-                ButtonCount();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Üres a kiválasztottak táblázáta.");
-            }
-
-        }
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                SelectedRow2 = e.RowIndex;
-            }
+            dgwAcc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void ButtonCount()
@@ -144,9 +92,9 @@ namespace IRF_IT6NSI
             foreach (var cb in this.Controls.OfType<CountButton>())
             {
                 int count = 0;
-                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                for (int i = 0; i < dgwAcc.Rows.Count; i++)
                 {
-                    if (dataGridView2.Rows[i].Cells[2].Value.ToString() == ((Instruments)ins).ToString())
+                    if (dgwAcc.Rows[i].Cells[2].Value.ToString() == ((Instruments)ins).ToString())
                     {
                         count++;
                     }
@@ -174,15 +122,72 @@ namespace IRF_IT6NSI
             }
             if (joe)
             {
-                button3.Enabled = true;
+                btnSave.Enabled = true;
             }
             else
             {
-                button3.Enabled = false;
+                btnSave.Enabled = false;
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void SaveCSV()
+        {
+            using (var sw = new StreamWriter("../../Concert/Concert.csv", false, Encoding.UTF8))
+            {
+
+                var newline = string.Format("{0},{1},{2},{3}", "Id", "Name", "Instrument", "Piece");
+                sw.WriteLine(newline);
+                sw.Flush();
+                for (int i = 0; i < dgwAcc.Rows.Count; i++)
+                {
+                    var id = dgwAcc.Rows[i].Cells[0].Value.ToString();
+                    var name = dgwAcc.Rows[i].Cells[1].Value.ToString();
+                    var instrument = dgwAcc.Rows[i].Cells[2].Value.ToString();
+                    var piece = dgwAcc.Rows[i].Cells[3].Value.ToString();
+                    newline = string.Format("{0},{1},{2},{3}", id, name, instrument, piece);
+                    sw.WriteLine(newline);
+                    sw.Flush();
+                }
+            }
+
+        }
+
+        private void btnAcc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ShowApp[(int)dgwApp.Rows[SelectedRowAccept].Cells[0].Value] = 0;
+                ShowAcc[(int)dgwApp.Rows[SelectedRowAccept].Cells[0].Value] = (int)dgwApp.Rows[SelectedRowAccept].Cells[0].Value;
+                ListApplications();
+                ListAccepted();
+                SelectedRowAccept = 0;
+                ButtonCount();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Üres a jelentkezők táblázata.");
+            }
+        }
+
+        private void btnDen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ShowApp[(int)dgwAcc.Rows[SelectedRowDeny].Cells[0].Value] = (int)dgwAcc.Rows[SelectedRowDeny].Cells[0].Value;
+                ShowAcc[(int)dgwAcc.Rows[SelectedRowDeny].Cells[0].Value] = 0;
+                ListApplications();
+                ListAccepted();
+                SelectedRowDeny = 0;
+                ButtonCount();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Üres a kiválasztottak táblázáta.");
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
         {
             Saving form2 = new Saving(SavingBS);
             DialogResult result = form2.ShowDialog();
@@ -192,26 +197,21 @@ namespace IRF_IT6NSI
                 MessageBox.Show("Sikeres mentés a Concert.csv fájlba.");
             }
         }
-        private void SaveCSV()
+
+        private void dgwApp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (var sw = new StreamWriter("../../Concert/Concert.csv", false, Encoding.UTF8))
+            if (e.RowIndex >= 0)
             {
-
-                var newline = string.Format("{0},{1},{2},{3}", "Id", "Name", "Instrument", "Piece");
-                sw.WriteLine(newline);
-                sw.Flush();
-                for (int i = 0; i < dataGridView2.Rows.Count; i++)
-                {
-                    var id = dataGridView2.Rows[i].Cells[0].Value.ToString();
-                    var name = dataGridView2.Rows[i].Cells[1].Value.ToString();
-                    var instrument = dataGridView2.Rows[i].Cells[2].Value.ToString();
-                    var piece = dataGridView2.Rows[i].Cells[3].Value.ToString();
-                    newline = string.Format("{0},{1},{2},{3}", id, name, instrument, piece);
-                    sw.WriteLine(newline);
-                    sw.Flush();
-                }
+                SelectedRowAccept = e.RowIndex;
             }
+        }
 
+        private void dgwAcc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                SelectedRowDeny = e.RowIndex;
+            }
         }
     }
 }

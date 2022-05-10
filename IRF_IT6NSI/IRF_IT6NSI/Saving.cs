@@ -15,8 +15,8 @@ namespace IRF_IT6NSI
         public Saving(BindingSource FinalBS)
         {
             InitializeComponent();
-            dataGridView1.DataSource = FinalBS;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgwFinal.DataSource = FinalBS;
+            dgwFinal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
     }

@@ -29,34 +29,34 @@ namespace IRF_IT6NSI
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgwApp = new System.Windows.Forms.DataGridView();
+            this.dgwAcc = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.btnAcc = new System.Windows.Forms.Button();
+            this.btnDen = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwApp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwAcc)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgwApp
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 26);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(457, 368);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dgwApp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwApp.Location = new System.Drawing.Point(12, 26);
+            this.dgwApp.Name = "dgwApp";
+            this.dgwApp.Size = new System.Drawing.Size(457, 368);
+            this.dgwApp.TabIndex = 0;
+            this.dgwApp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwApp_CellClick);
             // 
-            // dataGridView2
+            // dgwAcc
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(553, 26);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(422, 368);
-            this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.dgwAcc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwAcc.Location = new System.Drawing.Point(553, 26);
+            this.dgwAcc.Name = "dgwAcc";
+            this.dgwAcc.Size = new System.Drawing.Size(422, 368);
+            this.dgwAcc.TabIndex = 1;
+            this.dgwAcc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwAcc_CellClick);
             // 
             // label1
             // 
@@ -76,58 +76,58 @@ namespace IRF_IT6NSI
             this.label2.TabIndex = 3;
             this.label2.Text = "A kiválasztott fellépők";
             // 
-            // button1
+            // btnAcc
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(484, 126);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 45);
-            this.button1.TabIndex = 8;
-            this.button1.Text = ">";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAcc.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAcc.Location = new System.Drawing.Point(484, 126);
+            this.btnAcc.Name = "btnAcc";
+            this.btnAcc.Size = new System.Drawing.Size(47, 45);
+            this.btnAcc.TabIndex = 8;
+            this.btnAcc.Text = ">";
+            this.btnAcc.UseVisualStyleBackColor = true;
+            this.btnAcc.Click += new System.EventHandler(this.btnAcc_Click);
             // 
-            // button2
+            // btnDen
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(484, 223);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(47, 45);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDen.Location = new System.Drawing.Point(484, 223);
+            this.btnDen.Name = "btnDen";
+            this.btnDen.Size = new System.Drawing.Size(47, 45);
+            this.btnDen.TabIndex = 9;
+            this.btnDen.Text = "<";
+            this.btnDen.UseVisualStyleBackColor = true;
+            this.btnDen.Click += new System.EventHandler(this.btnDen_Click);
             // 
-            // button3
+            // btnSave
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(484, 323);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(47, 45);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Save";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(484, 323);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(47, 45);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CancelButton = this.button1;
+            this.CancelButton = this.btnAcc;
             this.ClientSize = new System.Drawing.Size(987, 576);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnDen);
+            this.Controls.Add(this.btnAcc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgwAcc);
+            this.Controls.Add(this.dgwApp);
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.Text = "Koncert";
+            ((System.ComponentModel.ISupportInitialize)(this.dgwApp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwAcc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,13 +135,13 @@ namespace IRF_IT6NSI
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgwApp;
+        private System.Windows.Forms.DataGridView dgwAcc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAcc;
+        private System.Windows.Forms.Button btnDen;
+        private System.Windows.Forms.Button btnSave;
     }
 }
 

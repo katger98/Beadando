@@ -107,20 +107,20 @@ namespace IRF_IT6NSI
         }
         private void ButtonCheck()
         {
-            bool joe = true;
+            bool isGood = true;
             int i = 1;
-            while ((joe == true) && (i < 5))
+            while ((isGood == true) && (i < 5))
             {
                 if ((Sav[i] > 0) && (Sav[i] < 5))
                 {
                 }
                 else
                 {
-                    joe = false;
+                    isGood = false;
                 }
                 i++;
             }
-            if (joe)
+            if (isGood)
             {
                 btnSave.Enabled = true;
             }
